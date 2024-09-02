@@ -1,0 +1,30 @@
+from ursina import *
+
+
+axe_x = 0
+axe_y = 0
+liste_cube_ground = []
+length_player = []
+
+def create_ground():
+    global axe_x,axe_y
+    for i in range(15):
+        axe_x = 0
+        for j in range(15):
+            cube = Entity(model  = 'cube',texture = 'white_cube',position = (axe_x,0,axe_y),scale = (10,10,10))
+            liste_cube_ground.append(cube)
+            
+            axe_x += 10
+        axe_y += 10
+    print(liste_cube_ground)
+
+def create_wall():
+    return (Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,0,150),scale = (150,50,10)),
+            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (150,0,70),scale = (150,50,10),rotation_y = 90),
+            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,0,-10),scale = (150,50,10)),
+            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (-10,0,70),scale = (150,50,10),rotation_y = 90))
+
+def init_player():
+    head_player = (Entity(model = 'cube',texture = 'white_cube',color = color.red,position = (10,10,10),scale = 10))
+    return head_player
+
