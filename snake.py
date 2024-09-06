@@ -7,7 +7,7 @@ import random
 player = FirstPersonController()
 app = Ursina()
 ground = create_ground()
-#wall = create_wall()
+wall = create_wall()
 camera.fov = 120
 head = init_player()
 head.position = player.position
@@ -22,6 +22,7 @@ Sky()
 
 
 def update():
+    global apple
     head.position = player.position + Vec3(0, 5.5, 0)
     
     distance = (head.position - apple.position).length()
@@ -32,5 +33,6 @@ def update():
             print("Collision détectée avec la pomme!")
             if len(liste_apple)==0:
                 create_apple(liste_apple)
+                apple.position = liste_apple[0].position
 
 app.run()
