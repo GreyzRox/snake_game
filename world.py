@@ -26,14 +26,22 @@ def create_wall():
             Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (-10,0,70),scale = (150,50,10),rotation_y = 90,collider = 'mesh'))
 
 def init_player():
-    head_player = (Entity(model = 'cube',texture = 'white_cube',color = color.red,position = (10,10,10),scale = 10))
+    head_player = (Entity(model = 'sphere',texture = 'white_cube',color = color.red,position = (10,10,10),scale = 10))
     return head_player
 
-
-def create_apple():
-    # Génération d'une position aléatoire pour la pomme
+def create_apple(liste):
     apple_position = (random.randint(1, 14) * 10, -40, random.randint(1, 14) * 10)
-    
-    # Création de l'entité pomme
-    apple = Entity(model='cube', texture='white_cube', color=color.green, position=apple_position, scale=(10, 10, 10), collider='box')
+    apple = Entity(model='cube', texture='white_cube', color=color.green, position=apple_position, scale=(10, 10, 10))
+    liste.append(apple)
     return apple
+
+def destroy_apple(liste):
+    for apple in liste:
+        apple.disable()
+    liste.clear()
+
+
+
+def compteur(i):
+    i = i + 1
+    return i
