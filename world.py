@@ -1,4 +1,5 @@
 from ursina import *
+import random
 
 
 axe_x = 0
@@ -11,7 +12,7 @@ def create_ground():
     for i in range(15):
         axe_x = 0
         for j in range(15):
-            cube = Entity(model  = 'cube',texture = 'white_cube',position = (axe_x,0,axe_y),scale = (10,10,10))
+            cube = Entity(model  = 'cube',texture = 'white_cube',position = (axe_x,-50,axe_y),scale = (10,10,10),collider = 'box')
             liste_cube_ground.append(cube)
             
             axe_x += 10
@@ -19,12 +20,20 @@ def create_ground():
     print(liste_cube_ground)
 
 def create_wall():
-    return (Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,0,150),scale = (150,50,10)),
-            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (150,0,70),scale = (150,50,10),rotation_y = 90),
-            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,0,-10),scale = (150,50,10)),
-            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (-10,0,70),scale = (150,50,10),rotation_y = 90))
+    return (Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,0,150),scale = (150,50,10),collider = 'mesh'),
+            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (150,0,70),scale = (150,50,10),rotation_y = 90,collider = 'mesh'),
+            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,0,-10),scale = (150,50,10),collider = 'mesh'),
+            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (-10,0,70),scale = (150,50,10),rotation_y = 90,collider = 'mesh'))
 
 def init_player():
     head_player = (Entity(model = 'cube',texture = 'white_cube',color = color.red,position = (10,10,10),scale = 10))
     return head_player
 
+
+def create_apple():
+    # Génération d'une position aléatoire pour la pomme
+    apple_position = (random.randint(1, 14) * 10, -40, random.randint(1, 14) * 10)
+    
+    # Création de l'entité pomme
+    apple = Entity(model='cube', texture='white_cube', color=color.green, position=apple_position, scale=(10, 10, 10), collider='box')
+    return apple

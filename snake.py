@@ -1,44 +1,25 @@
 from ursina import *
-from world import (create_ground,create_wall,init_player)
+from ursina.prefabs.first_person_controller import FirstPersonController
+from world import (create_ground,create_wall,init_player,create_apple)
 import time
 import random
 
-
+player = FirstPersonController()
 app = Ursina()
 ground = create_ground()
-wall = create_wall()
-player = init_player()
-camera.position = (player.x,player.y+10,player.z)
+#wall = create_wall()
 camera.fov = 120
-camera.rotation_x = 15
+head = init_player()
+head.position = player.position
 direction = Vec3(0, 0, 0)
-player_speed = 10
+player.speed = 30
+player.jump_height = 0
+apple = create_apple()
+
 Sky()
 
-def update():
-    global direction
-    
-    if held_keys['up arrow']:
-        direction = Vec3(0, 0, 1)
-        player.rotation_y = min(player.rotation_y + player_speed * time.dt, 0)
-        camera.rotation_y = min(camera.rotation_y + player_speed * time.dt, 0)
-    elif held_keys['down arrow']:
-        direction = Vec3(0, 0, -1)
-        player.rotation_y = max(player.rotation_y - player_speed * time.dt, 180)
-        camera.rotation_y = max(camera.rotation_y - player_speed * time.dt, 180)
-    elif held_keys['left arrow']:
-        direction = Vec3(-1, 0, 0)
-        player.rotation_y = max(player.rotation_y - player_speed * time.dt, -90)
-        camera.rotation_y = max(camera.rotation_y - player_speed * time.dt, -90)
-    elif held_keys['right arrow']:
-        direction = Vec3(1, 0, 0)
-        player.rotation_y = min(player.rotation_y + player_speed * time.dt, 90)
-        camera.rotation_y = min(camera.rotation_y + player_speed * time.dt, 90)
 
-    
-    player.position += direction * time.dt * player_speed
-    
-    camera.position = (player.x, player.y + 7, player.z+2)
-    print(player.rotation_y)
+def update():
+    head.position = player.position  + Vec3(0,5.2,0)
 
 app.run()
