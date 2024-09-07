@@ -1,6 +1,6 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
-from world import (create_ground,create_wall,init_player,create_apple,destroy_apple)
+from world import (create_ground,create_wall,init_player,create_apple,destroy_apple,create_colonne)
 import time
 import random
 
@@ -14,14 +14,15 @@ head.position = player.position
 player.speed = 30
 player.jump_height = 0
 collision_tolerance = 3.0
+colonne = create_colonne()
 liste_apple = []
 apple = create_apple(liste_apple)
 anti_nouvel_pomme = True
 compteur_apple = 0
 mon_texte = Text(text=compteur_apple, position=(0.7, 0.4), scale=5, color=color.white,font='font/cream_wish.ttf')
 
-Sky(texture = 'texture/sky.hdr',scale = 1,position_y = -1050)
-
+#Sky(texture = 'texture/sky.hdr',scale = 1,position_y = -1050)
+Sky()
 
 def update():
     global apple, compteur_apple

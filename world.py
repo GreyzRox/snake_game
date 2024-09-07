@@ -17,14 +17,14 @@ def create_ground():
             
             axe_x += 10
         axe_y += 10
-    real_ground = Entity (model = 'cube',texture = 'texture/sand',position = (75,-47,75),scale = (160,2,160),collider = 'cube')
+    real_ground = Entity (model = 'cube',texture = 'texture/sand',position = (70,-47,70),scale = (150,2,150),collider = 'cube')
 
 def create_wall():
-    return (Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,150),scale = (150,56,10),collider = 'mesh'),
-            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (150,-20,70),scale = (150,56,10),rotation_y = 90,collider = 'mesh'),
-            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,-10),scale = (150,56,10),collider = 'mesh'),
-            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (-10,-20,70),scale = (150,56,10),rotation_y = 90,collider = 'mesh'),
-            PointLight(parent=camera, position=(0, 10, -20), color=color.white)
+    return (Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,150),scale = (170,56,10),collider = 'box'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (150,-20,70),scale = (170,56,10),rotation_y = 90,collider = 'box'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,-10),scale = (170,56,10),collider = 'box'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (-10,-20,70),scale = (170,56,10),rotation_y = 90,collider = 'box'),
+            PointLight(parent=camera, position=(0, 30, -20), color=color.white)
 )
 
 def init_player():
@@ -41,3 +41,9 @@ def destroy_apple(liste):
     for apple in liste:
         apple.disable()
     liste.clear()
+
+def create_colonne():
+    return ((Entity(model = 'cube',color = color.black,position = (-12.5,-20,-12.5),scale = (15,56,15))),
+            (Entity(model = 'cube',color = color.black,position = (152.5,-20,-12.5),scale = (15,56,15))),
+            (Entity(model = 'cube',color = color.black,position = (152.5,-20,152.5),scale = (15,56,15))),
+            (Entity(model = 'cube',color = color.black,position = (-12.5,-20,152.5),scale = (15,56,15))))
