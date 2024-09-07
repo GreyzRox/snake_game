@@ -20,10 +20,10 @@ def create_ground():
     real_ground = Entity (model = 'cube',texture = 'texture/sand',position = (70,-47,70),scale = (150,2,150),collider = 'cube')
 
 def create_wall():
-    return (Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,150),scale = (170,56,10),collider = 'box'),
-            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (150,-20,70),scale = (170,56,10),rotation_y = 90,collider = 'box'),
-            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,-10),scale = (170,56,10),collider = 'box'),
-            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (-10,-20,70),scale = (170,56,10),rotation_y = 90,collider = 'box'),
+    return (Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,150),scale = (149,56,10),collider = 'box'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (150,-20,70),scale = (149,56,10),rotation_y = 90,collider = 'box'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,-10),scale = (149,56,10),collider = 'box'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (-10,-20,70),scale = (149,56,10),rotation_y = 90,collider = 'box'),
             PointLight(parent=camera, position=(0, 30, -20), color=color.white)
 )
 
