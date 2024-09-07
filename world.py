@@ -12,18 +12,20 @@ def create_ground():
     for i in range(15):
         axe_x = 0
         for j in range(15):
-            cube = Entity(model  = 'cube',texture = 'white_cube',position = (axe_x,-50,axe_y),scale = (10,6,10),collider = 'cube')
+            cube = Entity(model  = 'cube',texture = 'texture/wood',position = (axe_x,-78,axe_y),scale = (10,60,10),collider = 'cube')
             liste_cube_ground.append(cube)
             
             axe_x += 10
         axe_y += 10
-    real_ground = Entity (model = 'cube',texture = 'brick',position = (75,-47,75),scale = (165,2,165),collider = 'cube')
+    real_ground = Entity (model = 'cube',texture = 'texture/sand',position = (75,-47,75),scale = (160,2,160),collider = 'cube')
 
 def create_wall():
-    return (Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,-30,150),scale = (150,50,10),collider = 'mesh'),
-            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (150,-30,70),scale = (150,50,10),rotation_y = 90,collider = 'mesh'),
-            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (70,-30,-10),scale = (150,50,10),collider = 'mesh'),
-            Entity(model = 'cube', texture = 'white_cube',color = color.blue,position = (-10,-30,70),scale = (150,50,10),rotation_y = 90,collider = 'mesh'))
+    return (Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,150),scale = (150,56,10),collider = 'mesh'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (150,-20,70),scale = (150,56,10),rotation_y = 90,collider = 'mesh'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,-10),scale = (150,56,10),collider = 'mesh'),
+            Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (-10,-20,70),scale = (150,56,10),rotation_y = 90,collider = 'mesh'),
+            PointLight(parent=camera, position=(0, 10, -20), color=color.white)
+)
 
 def init_player():
     head_player = (Entity(model = 'sphere',texture = 'white_cube',color = color.red,position = (10,10,10),scale = 10,))
@@ -39,9 +41,3 @@ def destroy_apple(liste):
     for apple in liste:
         apple.disable()
     liste.clear()
-
-
-
-def compteur(i):
-    i = i + 1
-    return i
