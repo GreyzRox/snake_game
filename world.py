@@ -24,16 +24,16 @@ def create_wall():
             Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (150,-20,70),scale = (149,56,10),rotation_y = 90,collider = 'box'),
             Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (70,-20,-10),scale = (149,56,10),collider = 'box'),
             Entity(model = 'cube',color = color.rgba(255,255,255,50),position = (-10,-20,70),scale = (149,56,10),rotation_y = 90,collider = 'box'),
-            PointLight(parent=camera, position=(0, 30, -20), color=color.white)
+            #PointLight(parent=camera, position=(0, 30, -20), color=color.white)
 )
 
 def init_player():
-    head_player = (Entity(model = 'sphere',texture = 'white_cube',color = color.red,position = (10,10,10),scale = 10,))
+    head_player = (Entity(model = 'sphere',texture = 'white_cube',color = color.red,position = (10,100,10),scale = 10))
     return head_player
 
 def create_apple(liste):
     apple_position = (random.randint(1, 14) * 10, -40, random.randint(1, 14) * 10)
-    apple = Entity(model='cube', texture='white_cube', color=color.green, position=apple_position, scale=(10, 10, 10))
+    apple = Entity(model='sphere', color=color.red, position=apple_position, scale=10)
     liste.append(apple)
     return apple
 

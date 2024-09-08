@@ -41,4 +41,6 @@ def update():
                 compteur_apple = compteur_apple + 1
                 mon_texte.text = str(compteur_apple)
 
+    apple.rotation_y += 20 * time.dt
+
 app.run()
